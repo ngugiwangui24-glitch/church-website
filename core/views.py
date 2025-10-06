@@ -1,3 +1,11 @@
-from django.shortcuts import render
+from rest_framework import generics
+from .models import Event, Sermon
+from .serializers import EventSerializer, SermonSerializer
 
-# Create your views here.
+class EventListCreate(generics.ListCreateAPIView):
+    queryset = Event.objects.all()
+    serializer_class = EventSerializer
+
+class SermonListCreate(generics.ListCreateAPIView):
+    queryset = Sermon.objects.all()
+    serializer_class = SermonSerializer

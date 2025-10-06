@@ -16,10 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from core.views import EventListCreate, SermonListCreate
+from core.views import EventListCreate, EventRetrieveUpdateDelete, SermonListCreate, SermonRetrieveUpdateDelete
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/events/', EventListCreate.as_view(), name='events'),
+    path('api/events/<int:pk>/', EventRetrieveUpdateDelete.as_view(), name='event-detail'),
     path('api/sermons/', SermonListCreate.as_view(), name='sermons'),
+    path('api/sermons/<int:pk>/', SermonRetrieveUpdateDelete.as_view(), name='sermon-detail'),
 ]
